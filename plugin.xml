@@ -1,0 +1,46 @@
+<idea-plugin url="https://github.com/stokito/IdeaJol">
+    <name>Java Object Layout</name>
+    <id>JOL</id>
+    <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="182.0"/>
+    <category>Profiling</category>
+    <description>
+        <![CDATA[
+        <p>
+        <a href="https://openjdk.java.net/projects/code-tools/jol/">jol</a> is the tiny toolbox to analyze object layout schemes in JVMs.
+        It allows you to make an estimate how much memory the object takes. This allows to make a simplest but most efficient performance improvements. Just check your DTOs if they fit into 64 bytes of processor's cache line.
+        </p>
+        <p>For example, in HotSpot VM on 64x processor an empty string takes 40 bytes i.e. 24 bytes for String object itself + 16 bytes for an internal empty char array.
+        </p>
+    ]]>
+    </description>
+    <change-notes><![CDATA[
+      v1.6.0 Added an inspection to report about to big classes.<br>
+      v1.5.0 show layout in table instead of raw text.<br>
+      v1.3.0 first published version.<br>
+    ]]>
+    </change-notes>
+    <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html on how to target different products -->
+    <version>1.6.0</version>
+    <vendor email="stokito@gmail.com" url="https://stokito.com/">Sergey Ponomarev</vendor>
+    <depends>com.intellij.modules.java</depends>
+    <actions>
+        <action id="showObjectLayout" class="com.github.stokito.IdeaJol.ShowObjectLayoutAction" text="Show Object Layout" description="Show JVM Object Layout of the current class" icon="/ram-13x13.png">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+            <add-to-group group-id="CodeMenu" anchor="last"/>
+        </action>
+    </actions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="JOL" anchor="right" icon="/ram-13x13.png" factoryClass="com.github.stokito.IdeaJol.toolwindow.JolToolWindowFactory"/>
+        <projectService serviceInterface="com.github.stokito.IdeaJol.toolwindow.JolView" serviceImplementation="com.github.stokito.IdeaJol.toolwindow.JolView"/>
+        <localInspection shortName="jol"
+                         displayName="Class have too big memory footprint"
+                         groupPath="Java"
+                         groupName="Memory"
+                         enabledByDefault="true"
+                         level="WARNING"
+                         implementationClass="com.github.stokito.IdeaJol.inspection.JolInspection"/>
+    </extensions>
+</idea-plugin>

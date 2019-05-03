@@ -13,6 +13,7 @@ public class Layouters {
     public static final X86_64_DataModel MODEL_64 = new X86_64_DataModel();
     public static final X86_64_COOPS_DataModel MODEL_64_COOPS = new X86_64_COOPS_DataModel();
     public static final X86_64_COOPS_DataModel MODEL_64_COOPS_16 = new X86_64_COOPS_DataModel(16);
+    public static final X86_64_COOPS_DataModel MODEL_64_COOPS_32 = new X86_64_COOPS_DataModel(32);
     public static final Layouter[] LAYOUTERS = {
             new RawLayouter(MODEL_32),
             new RawLayouter(MODEL_64),
@@ -20,6 +21,7 @@ public class Layouters {
             new HotSpotLayouter(MODEL_32, false, false, false, true, HOTSPOT_DEFAULT_FIELD_ALLOCATION_STYLE),
             new HotSpotLayouter(MODEL_64, false, false, false, true, HOTSPOT_DEFAULT_FIELD_ALLOCATION_STYLE),
             new HotSpotLayouter(MODEL_64_COOPS, false, false, false, true, HOTSPOT_DEFAULT_FIELD_ALLOCATION_STYLE),
-            new HotSpotLayouter(MODEL_64_COOPS_16, false, false, false, true, HOTSPOT_DEFAULT_FIELD_ALLOCATION_STYLE)
+            new HotSpotLayouter(MODEL_64_COOPS_16, false, false, false, true, HOTSPOT_DEFAULT_FIELD_ALLOCATION_STYLE),
+            new HotSpotLayouter(MODEL_64_COOPS_32, false, false, false, true, HOTSPOT_DEFAULT_FIELD_ALLOCATION_STYLE)
     };
 }

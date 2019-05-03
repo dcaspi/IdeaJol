@@ -65,6 +65,7 @@
                 <item value="HotSpot 64-bit VM, 8-byte align"/>
                 <item value="HotSpot 64-bit VM, COOPS, 8-byte align"/>
                 <item value="HotSpot 64-bit VM, COOPS, 16-byte align"/>
+                <item value="HotSpot 64-bit VM, COOPS, 32-byte align"/>
               </model>
               <preferredSize width="250" height="26"/>
               <selectedIndex value="4"/>
